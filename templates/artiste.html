@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<title>Informations sur le Groupe</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="group-info">
+            <h2 id="{{.Name}}">{{.Name}}</h2>
+            <img id="{{.Image}}" src="{{.Image}}" alt="{{.Image}}">
+            <p>{{.ID}} <span id=""></span></p>
+            <p>Date de création: {{.Creation}} <span id="{{.Creation}}"></span></p>
+            <p>Premier album: <span id={{.FirstAlbum}}></span>{{.FirstAlbum}}</p>
+        </div>
+
+        <div class="members">
+            <h3>
+                <div>
+                    <h3>Membres du groupe</h3>
+                    {{range .Members}}
+                    <p>{{.}}</p>
+                    {{else}}
+                    <p>Aucun membre répertorié.</p>
+                    {{end}}
+                </div>
+            </h3>
+            <ul id=Members>
+                <!-- Les membres seront listés ici -->
+            </ul>
+        </div>
+
+        <div class="concert-dates">
+            <h3>date</h3>
+            {{range .ConcertDatesRecup}}
+            <p>{{.}}</p>
+            {{else}}
+            <p>Aucune date de concert disponible.</p>
+            {{end}}
+
+            <ul id=Creation>
+                <!-- Les dates de concert seront listées ici -->
+            </ul>
+        </div>
+
+        <div class="relations">
+            <h3>relations</h3>
+            {{range $key, $value := .RelationsRecup}}
+            <p>{{$key}}: {{$value}}</p>
+            {{else}}
+            <p>Pas de données disponibles.</p>
+            {{end}}
+            <div id=Relations>
+                <!-- Les relations seront affichées ici -->
+            </div>
+        </div>
+
+        <a id="group-link" href=""><iframe style="border-radius:12px" src="{{.Link}}" width="40%" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></a>
+    </div>
+
+    <script>
+        // Ici, vous pouvez ajouter du JavaScript pour manipuler les données
+    </script>
+</body>
+
+</html>

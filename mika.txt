@@ -1,0 +1,90 @@
+<div class="menu_song">{{range .}}
+
+    <li class="songItem">
+        <span>01</span>
+        <img src="{{.Image}}" alt="Alan">
+        <h5>
+            On My Way
+            <div class="subtitle">Alan Walker</div>
+
+        </h5>
+        <i class="bi playListPlay bi-play-circle-fill" id="1"></i> {{end}}
+</div>
+<li class="songItem">
+    <span>01</span>
+    <img src="{{.Image}}" alt="Alan">
+    <h5>
+        On My Way
+        <div class="subtitle">Alan Walker</div>
+
+    </h5>
+    <i class="bi playListPlay bi-play-circle-fill" id="1"></i>
+
+</li>
+
+<li class="songItem">
+    <span>02</span>
+    <img src="1.jpg" alt="Alan">
+    <h5>
+        On My Way
+        <div class="subtitle">Alan Walker</div>
+
+    </h5>
+    <i class="bi playListPlay bi-play-circle-fill" id="2"></i>
+
+</li>
+<li class="songItem">
+    <span>03</span>
+    <img src="1.jpg" alt="Alan">
+    <h5>
+        On My Way
+        <div class="subtitle">Alan Walker</div>
+
+    </h5>
+    <i class="bi playListPlay bi-play-circle-fill" id="3"></i>
+
+</li>
+<li class="songItem">
+    <span>04</span>
+    <img src="1.jpg" alt="Alan">
+    <h5>
+        On My Way
+        <div class="subtitle">Alan Walker</div>
+
+    </h5>
+    <i class="bi playListPlay bi-play-circle-fill" id="4"></i>
+
+</li>
+<li class="songItem">
+    <span>05</span>
+    <img src="1.jpg" alt="Alan">
+    <h5>
+        On My Way
+        <div class="subtitle">Alan Walker</div>
+
+    </h5>
+    <i class="bi playListPlay bi-play-circle-fill" id="5"></i>
+
+</li>
+<li class="songItem">
+    <span>06</span>
+    <img src="1.jpg" alt="Alan">
+    <h5>
+        On My Way
+        <div class="subtitle">Alan Walker</div>
+    </h5>
+    <i class="bi playListPlay bi-play-circle-fill" id="6"></i>
+
+</li>
+
+
+
+
+
+<form method="GET" action="acceille.html">
+    <button type="submit">click salope</button>
+    <input type="hidden" name="ID" value="{{.ID}}">
+</form>
+
+
+ {{range .ArtistHTML}}

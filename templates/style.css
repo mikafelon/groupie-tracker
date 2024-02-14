@@ -1,0 +1,67 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.group-info,
+.members,
+.concert-dates,
+.relations {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.group-info h2,
+.members h3,
+.concert-dates h3,
+.relations h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.group-info img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    color: #00f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+iframe {
+    width: 100%;
+    border-radius: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}
