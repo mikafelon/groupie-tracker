@@ -23,6 +23,15 @@ func AlreadyinTheList(st string, list []F.Artists) bool {
 	}
 	return false
 }
+func AlreadyinTheList2(st string, list []string) bool {
+	for _, c := range list {
+		if c == st {
+			return true
+		}
+	}
+	return false
+}
+
 func Temp(w http.ResponseWriter, r *http.Request) {
 	fileSystem := http.Dir("./templates")
 	fileServer := http.FileServer(fileSystem)
@@ -47,12 +56,20 @@ func Temp(w http.ResponseWriter, r *http.Request) {
 
 		searchText := r.Form.Get("searchText")
 
-		fmt.Println("pass", searchText)
+		var locations []string
+		for _, b := range F.FetchArtists() {
+			for j := range b.LocationsRecup {
+			if !AlreadyinTheList2(b.LocationsRecup[j], locations) {
+					locations = append(locations, b.LocationsRecup[j])
+				}
+			}
+		}
 
 		if len(searchText) <= 0 {
 			data = F.PageData{
 				ArtistHTML:  F.FetchArtists(),
 				ArtistsLIST: F.FetchArtists(),
+				Villes:      locations,
 			}
 
 			err = tmpl.Execute(w, data)
@@ -62,6 +79,7 @@ func Temp(w http.ResponseWriter, r *http.Request) {
 
 		}
 		var artists []F.Artists
+		var villes []string
 
 		for _, b := range F.FetchArtists() {
 			if strings.Contains(strings.ToLower(b.Name), strings.ToLower(searchText)) {
@@ -80,13 +98,13 @@ func Temp(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 
-			if strings.Contains(strings.ToLower(strconv.Itoa(b.Creation)), strings.ToLower(searchText)) {
+			if strings.ToLower(strconv.Itoa(b.Creation)) == strings.ToLower(searchText)  {
 				if !AlreadyinTheList(b.Name, artists) {
 					artists = append(artists, b)
 				}
 			}
 
-			if strings.Contains(strings.ToLower(b.FirstAlbum), strings.ToLower(searchText)) {
+			if (strings.ToLower(b.FirstAlbum) == strings.ToLower(searchText)) {
 				if !AlreadyinTheList(b.Name, artists) {
 					artists = append(artists, b)
 				}
@@ -105,11 +123,20 @@ func Temp(w http.ResponseWriter, r *http.Request) {
 					artists = append(artists, b)
 				}
 			}
-		}
 
+			for j := range b.LocationsRecup {
+				if !AlreadyinTheList2(b.LocationsRecup[j], villes) {
+					villes = append(villes, b.LocationsRecup[j])
+
+				}
+
+			}
+		}
+		fmt.Println(villes)
 		data = F.PageData{
 			ArtistHTML:  artists,
 			ArtistsLIST: F.FetchArtists(),
+			Villes:      villes,
 		}
 
 		err = tmpl.Execute(w, data)
@@ -128,8 +155,10 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(idform)
 
 	pageID := data.ArtistHTML[0]
-	if len(data.ArtistHTML) != 1 {
-		pageID = data.ArtistHTML[id-1]
+		for _, z := range data.ArtistHTML{
+		if id ==  z.ID {
+			pageID = z 
+		}
 	}
 
 	tmpl, err := template.ParseFiles("./templates/artiste.html")

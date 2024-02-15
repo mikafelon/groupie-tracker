@@ -52,8 +52,18 @@
                     <datalist id="liste">
                         {{range .ArtistsLIST}}
                         <option name="{{.ID}}" value="{{.Name}}" ></option>
-                        href="/artiste/{{.ID}}"
+                        <option value="{{.Creation}}" name="{{.Creation}}"></option>
+                        <option value="{{.FirstAlbum}}" name="{{.FirstAlbum}}"></option>                    
+                    
+                        {{range .Members}}
+                        <option value="{{.}}" name="{{.}}"></option>
                         {{end}}
+                        {{end}}
+                        
+                        {{range .Villes}}
+                        <option name="{{.}}" value="{{.}}" ></option>
+                        {{end}}
+
                     </datalist>
                 </form>
                 <div class="user">
